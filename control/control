@@ -1,0 +1,8 @@
+Package: fanctl
+Version: 1
+Depends: libc, libssp
+Source: package/private/zyxel/fanctl
+Section: utils
+Architecture: ipq
+Installed-Size: 1495
+Description:  Fan control tool
