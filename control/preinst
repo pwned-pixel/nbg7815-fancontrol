@@ -1,0 +1,19 @@
+#!/bin/sh
+
+stop_service() {
+	if [ -f /etc/init.d/fanctld ] && [ -f /usr/bin/fanctl ]; then
+		if [ $(/etc/init.d/fanctld status) = "running" ]; then
+			/etc/init.d/fanctld stop
+		fi
+	fi
+}
+
+stop_service
+
+preserve_config() {
+	if [ -z "$${IPKG_INSTROOT}" ]; then
+		cp /etc/config/fanctld /tmp/fanctld
+	fi
+}
+
+preserve_config

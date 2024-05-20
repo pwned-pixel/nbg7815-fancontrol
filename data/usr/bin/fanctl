@@ -1,36 +1,40 @@
 #!/bin/sh
 
-FAN_GPIO=21
+. /lib/functions.sh
 
-usage() {
-  echo "usage: $0 [start|stop|status]"
+get_gpio() {
+	config_load 'fanctld'
+	config_get FAN_GPIO "global" "Gpio"
+		[ -z "${FAN_GPIO}" ] || {
+			return 1
+		}
+		[ -f "/sys/class/gpio/${FAN_GPIO}/value" ] || {
+			return 1
+		}
 }
 
-fan_init() {
-  if [ ! -d /sys/class/gpio/gpio${FAN_GPIO} ]; then
-    echo $FAN_GPIO > /sys/class/gpio/export
-    echo out > /sys/class/gpio/gpio${FAN_GPIO}/direction
-  fi
+get_gpio
+GPIO="${FAN_GPIO}"
+
+usage() {
+	echo "usage: $0 [start|stop|status]"
 }
 
 fan_start() {
-  fan_init
-  echo 1 > /sys/class/gpio/gpio${FAN_GPIO}/value
+	echo 1 > /sys/class/gpio/${GPIO}/value
 }
 
 fan_stop() {
-  fan_init
-  echo 0 > /sys/class/gpio/gpio${FAN_GPIO}/value
+	echo 0 > /sys/class/gpio/${GPIO}/value
 }
 
 fan_status() {
-  fan_init
-  status=`cat /sys/class/gpio/gpio${FAN_GPIO}/value`
-  if [ $status = 0 ]; then
-	  echo "disable"
-  else
-	  echo "enable"
-  fi
+	status=`cat /sys/class/gpio/${GPIO}/value`
+		if [ $status = 0 ]; then
+			echo "disabled"
+		else
+			echo "enabled"
+		fi
 }
 
 case $1 in

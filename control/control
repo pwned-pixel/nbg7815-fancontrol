@@ -1,8 +1,9 @@
-Package: fanctl
-Version: 1
-Depends: libc, libssp
-Source: package/private/zyxel/fanctl
-Section: utils
-Architecture: ipq
-Installed-Size: 1495
-Description:  Fan control tool
+Package: fanctld
+Version: 1.1-1
+Depends: libc
+Provides: fan-control for ZyXEL NBG7815
+License: GPL 2
+LicenseFiles: LICENSE
+Architecture: aarch64_cortex-a53
+Description: fan control tool
+Installed-Size: 6877

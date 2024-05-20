@@ -1,4 +1,23 @@
 #!/bin/sh
+
+restore_config() {
+	if [ -z "$${IPKG_INSTROOT}" ]; then
+		cp /tmp/fanctld /etc/config/fanctld
+	fi
+}
+
+restore_config
+
+start_service() {
+	if [ -f /etc/init.d/fanctld ] && [ -f /usr/bin/fanctl ]; then
+		if [ $(/etc/init.d/fanctld status) = "inactive" ]; then
+			/etc/init.d/fanctld start
+		fi
+	fi
+}
+
+start_service
+
 [ "${IPKG_NO_SCRIPT}" = "1" ] && exit 0
 . ${IPKG_INSTROOT}/lib/functions.sh
 default_postinst $0 $@

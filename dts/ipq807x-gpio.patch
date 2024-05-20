@@ -1,0 +1,11 @@
+diff --git a/target/linux/qualcommax/image/ipq807x.mk b/target/linux/qualcommax/image/ipq807x.mk
+--- a/target/linux/qualcommax/image/ipq807x.mk
++++ b/target/linux/qualcommax/image/ipq807x.mk
+@@ -321,6 +321,6 @@ define Device/zyxel_nbg7815
+ 	DEVICE_DTS_CONFIG := config@nbg7815
+ 	SOC := ipq8074
+ 	DEVICE_PACKAGES := ipq-wifi-zyxel_nbg7815 kmod-ath11k-pci \
+-		kmod-bluetooth
++		kmod-bluetooth kmod-hwmon-tmp103 kmod-hwmon-gpiofan
+ endef
+ TARGET_DEVICES += zyxel_nbg7815
