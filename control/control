@@ -1,9 +1,9 @@
 Package: fanctld
-Version: 1.1-1
+Version: 1.2-1
 Depends: libc
 Provides: fan-control for ZyXEL NBG7815
 License: GPL 2
 LicenseFiles: LICENSE
 Architecture: aarch64_cortex-a53
 Description: fan control tool
-Installed-Size: 6877
+Installed-Size: 6994

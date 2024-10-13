@@ -1,7 +1,7 @@
 
 config fanctld 'global'
 	option Enabled '1'
-	option Gpio 'fan'
+	option Gpio 'gpio_fan'
 	option Debug '0'
 	option Delay '5'
 	option Hits '5'

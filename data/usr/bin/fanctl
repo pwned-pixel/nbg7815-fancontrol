@@ -8,7 +8,7 @@ get_gpio() {
 		[ -z "${FAN_GPIO}" ] || {
 			return 1
 		}
-		[ -f "/sys/class/gpio/${FAN_GPIO}/value" ] || {
+		[ -f "/sys/devices/platform/${FAN_GPIO}/hwmon/hwmon1/fan1_target" ] || {
 			return 1
 		}
 }
@@ -21,15 +21,15 @@ usage() {
 }
 
 fan_start() {
-	echo 1 > /sys/class/gpio/${GPIO}/value
+	echo 1 > /sys/devices/platform/${FAN_GPIO}/hwmon/hwmon1/fan1_target
 }
 
 fan_stop() {
-	echo 0 > /sys/class/gpio/${GPIO}/value
+	echo 0 > /sys/devices/platform/${FAN_GPIO}/hwmon/hwmon1/fan1_target
 }
 
 fan_status() {
-	status=`cat /sys/class/gpio/${GPIO}/value`
+	status=`cat /sys/devices/platform/${FAN_GPIO}/hwmon/hwmon1/fan1_target`
 		if [ $status = 0 ]; then
 			echo "disabled"
 		else

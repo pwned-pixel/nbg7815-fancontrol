@@ -1,1 +1,1 @@
-fc32e3e38c1964f9f93a81f081e6a5f0f8cd1af908d6d1953bae30d605e0f268  ./fanctld_v1.1-1_aarch64_cortex-a53.ipk
+149fe844614e3691dda8db77ca76a0ad887fe3d8eb72ff034d5e655246daac30  ./fanctld_v1.2-1_aarch64_cortex-a53.ipk
